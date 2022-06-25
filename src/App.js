@@ -8,13 +8,64 @@ class App extends React.Component {
     this.state = {
       nomeDaCarta: '',
       descricaoDaCarta: '',
-      atributo1: '',
-      atributo2: '',
-      atributo3: '',
+      atributo1: '0',
+      atributo2: '0',
+      atributo3: '0',
       imagemDaCarta: '',
       raridade: 'normal',
       superTrunfo: false,
+      oBotaoEstaDesabilitado: true,
     };
+  }
+
+  verificaAtributos = () => {
+    const { atributo1, atributo2, atributo3 } = this.state;
+    const maximoCada = 90;
+    if (atributo1 > maximoCada || atributo2 > maximoCada || atributo3 > maximoCada) {
+      this.setState({
+        oBotaoEstaDesabilitado: true,
+      });
+    }
+    if (atributo1 < 0 || atributo2 < 0 || atributo3 < 0) {
+      this.setState({
+        oBotaoEstaDesabilitado: true,
+      });
+    }
+  }
+
+  verificaTotalAtributos = () => {
+    const { atributo1, atributo2, atributo3 } = this.state;
+    const mafximo = 210;
+    const somaAtributos = Number(atributo1) + Number(atributo2) + Number(atributo3);
+    if (somaAtributos > mafximo) {
+      this.setState({
+        oBotaoEstaDesabilitado: true,
+      });
+    } else {
+      this.setState({
+        oBotaoEstaDesabilitado: false,
+      }, () => { this.verificaTudo(); });
+    }
+  }
+
+  verificaDescricaoNomeImagem = () => {
+    const { nomeDaCarta, descricaoDaCarta, imagemDaCarta } = this.state;
+    if (nomeDaCarta.split(' ')[0] !== ''
+      && descricaoDaCarta.split(' ')[0] !== ''
+      && imagemDaCarta.split(' ')[0] !== '') {
+      this.setState({
+        oBotaoEstaDesabilitado: false,
+      });
+    } else {
+      this.setState({
+        oBotaoEstaDesabilitado: true,
+      });
+    }
+  }
+
+  verificaTudo = () => {
+    this.verificaDescricaoNomeImagem();
+    this.verificaAtributos();
   }
 
   handleChange = ({ target }) => {
@@ -23,6 +74,8 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
+    }, () => {
+      this.verificaTotalAtributos();
     });
   }
 
@@ -36,6 +89,7 @@ class App extends React.Component {
       imagemDaCarta,
       raridade,
       superTrunfo,
+      oBotaoEstaDesabilitado,
     } = this.state;
 
     return (
@@ -50,7 +104,7 @@ class App extends React.Component {
           cardRare={ raridade }
           cardTrunfo={ superTrunfo }
           hasTrunfo
-          isSaveButtonDisabled
+          isSaveButtonDisabled={ oBotaoEstaDesabilitado }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ () => {} }
         />

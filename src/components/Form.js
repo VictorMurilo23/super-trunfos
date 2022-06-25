@@ -24,6 +24,7 @@ class Form extends React.Component {
             type="text"
             name="nomeDaCarta"
             id="nomeDaCarta"
+            required
             data-testid="name-input"
             onChange={ onInputChange }
           />
@@ -35,6 +36,7 @@ class Form extends React.Component {
             value={ cardDescription }
             name="descricaoDaCarta"
             id="descricaoDaCarta"
+            required
             data-testid="description-input"
             onChange={ onInputChange }
           />
@@ -47,6 +49,7 @@ class Form extends React.Component {
             type="number"
             name="atributo1"
             id="atributo1"
+            required
             data-testid="attr1-input"
             onChange={ onInputChange }
           />
@@ -59,6 +62,7 @@ class Form extends React.Component {
             type="number"
             name="atributo2"
             id="atributo2"
+            required
             data-testid="attr2-input"
             onChange={ onInputChange }
           />
@@ -71,6 +75,7 @@ class Form extends React.Component {
             type="number"
             name="atributo3"
             id="atributo3"
+            required
             data-testid="attr3-input"
             onChange={ onInputChange }
           />
@@ -83,6 +88,7 @@ class Form extends React.Component {
             type="text"
             id="imagemDaCarta"
             name="imagemDaCarta"
+            required
             data-testid="image-input"
             onChange={ onInputChange }
           />
