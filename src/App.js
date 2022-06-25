@@ -15,7 +15,20 @@ class App extends React.Component {
       raridade: 'normal',
       superTrunfo: false,
       oBotaoEstaDesabilitado: true,
+      // cartasSalvadas: [],
     };
+  }
+
+  resetarInfoCarta = () => {
+    this.setState({
+      nomeDaCarta: '',
+      descricaoDaCarta: '',
+      atributo1: '0',
+      atributo2: '0',
+      atributo3: '0',
+      imagemDaCarta: '',
+      raridade: 'normal',
+    });
   }
 
   verificaAtributos = () => {
@@ -79,6 +92,35 @@ class App extends React.Component {
     });
   }
 
+  salvarCarta = (event) => {
+    event.preventDefault();
+    // const {
+    //   nomeDaCarta,
+    //   descricaoDaCarta,
+    //   atributo1,
+    //   atributo2,
+    //   atributo3,
+    //   imagemDaCarta,
+    //   raridade,
+    //   superTrunfo,
+    // } = this.state;
+
+    // const obj = {
+    //   nome: nomeDaCarta,
+    //   desc: descricaoDaCarta,
+    //   atr1: atributo1,
+    //   atr2: atributo2,
+    //   atr3: atributo3,
+    //   img: imagemDaCarta,
+    //   rari: raridade,
+    //   superTrun: superTrunfo,
+    // };
+    // this.setState({
+    //   cartasSalvar: [obj],
+    // });
+    this.resetarInfoCarta();
+  }
+
   render() {
     const {
       nomeDaCarta,
@@ -106,7 +148,7 @@ class App extends React.Component {
           hasTrunfo
           isSaveButtonDisabled={ oBotaoEstaDesabilitado }
           onInputChange={ this.handleChange }
-          onSaveButtonClick={ () => {} }
+          onSaveButtonClick={ this.salvarCarta }
         />
         <Card
           cardName={ nomeDaCarta }

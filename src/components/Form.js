@@ -128,7 +128,6 @@ class Form extends React.Component {
           onClick={ onSaveButtonClick }
         >
           Salvar
-
         </button>
       </form>
     );
