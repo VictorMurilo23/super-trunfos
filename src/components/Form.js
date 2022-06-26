@@ -11,10 +11,29 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
+
+    let exibeTrunfoOuNao;
+    if (hasTrunfo === false) {
+      exibeTrunfoOuNao = (
+        <label htmlFor="superTrunfo">
+          É um super trunfo?
+          <input
+            checked={ cardTrunfo }
+            type="checkbox"
+            name="superTrunfo"
+            id="superTrunfo"
+            data-testid="trunfo-input"
+            onChange={ onInputChange }
+          />
+        </label>);
+    } else {
+      exibeTrunfoOuNao = <p>Você já tem um Super Trunfo em seu baralho</p>;
+    }
+
     return (
       <form>
         <label htmlFor="nomeDaCarta">
@@ -109,17 +128,7 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="superTrunfo">
-          É um super trunfo?
-          <input
-            checked={ cardTrunfo }
-            type="checkbox"
-            name="superTrunfo"
-            id="superTrunfo"
-            data-testid="trunfo-input"
-            onChange={ onInputChange }
-          />
-        </label>
+        {exibeTrunfoOuNao}
 
         <button
           type="submit"
@@ -143,7 +152,7 @@ Form.propTypes = {
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
-  // hasTrunfo: PropTypes.bool,
+  hasTrunfo: PropTypes.bool,
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
@@ -158,9 +167,10 @@ Form.defaultProps = {
   cardImage: 'Imagem',
   cardRare: 'Raridade',
   cardTrunfo: true,
+  hasTrunfo: false,
   isSaveButtonDisabled: true,
-  onInputChange: () => { console.log(oi); },
-  onSaveButtonClick: () => { console.log(oi); },
+  onInputChange: () => { console.log('oi'); },
+  onSaveButtonClick: () => { console.log('oi'); },
 };
 
 export default Form;

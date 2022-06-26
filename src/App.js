@@ -14,9 +14,18 @@ class App extends React.Component {
       imagemDaCarta: '',
       raridade: 'normal',
       superTrunfo: false,
+      temTrunfo: false,
       oBotaoEstaDesabilitado: true,
-      // cartasSalvadas: [],
+      baralhoSalvo: [],
     };
+  }
+
+  verificaSeTemTrunfo = () => {
+    const { baralhoSalvo } = this.state;
+    const trun = baralhoSalvo.some((element) => element.superTrun === true);
+    this.setState({
+      temTrunfo: trun,
+    });
   }
 
   resetarInfoCarta = () => {
@@ -94,30 +103,33 @@ class App extends React.Component {
 
   salvarCarta = (event) => {
     event.preventDefault();
-    // const {
-    //   nomeDaCarta,
-    //   descricaoDaCarta,
-    //   atributo1,
-    //   atributo2,
-    //   atributo3,
-    //   imagemDaCarta,
-    //   raridade,
-    //   superTrunfo,
-    // } = this.state;
+    const {
+      nomeDaCarta,
+      descricaoDaCarta,
+      atributo1,
+      atributo2,
+      atributo3,
+      imagemDaCarta,
+      raridade,
+      superTrunfo,
+      baralhoSalvo,
+    } = this.state;
 
-    // const obj = {
-    //   nome: nomeDaCarta,
-    //   desc: descricaoDaCarta,
-    //   atr1: atributo1,
-    //   atr2: atributo2,
-    //   atr3: atributo3,
-    //   img: imagemDaCarta,
-    //   rari: raridade,
-    //   superTrun: superTrunfo,
-    // };
-    // this.setState({
-    //   cartasSalvar: [obj],
-    // });
+    const infoCartaSalva = {
+      nome: nomeDaCarta,
+      desc: descricaoDaCarta,
+      atr1: atributo1,
+      atr2: atributo2,
+      atr3: atributo3,
+      img: imagemDaCarta,
+      rari: raridade,
+      superTrun: superTrunfo,
+    };
+
+    this.setState({
+      baralhoSalvo: [...baralhoSalvo, infoCartaSalva],
+    }, () => { this.verificaSeTemTrunfo(); });
+
     this.resetarInfoCarta();
   }
 
@@ -132,6 +144,7 @@ class App extends React.Component {
       raridade,
       superTrunfo,
       oBotaoEstaDesabilitado,
+      temTrunfo,
     } = this.state;
 
     return (
@@ -145,7 +158,7 @@ class App extends React.Component {
           cardImage={ imagemDaCarta }
           cardRare={ raridade }
           cardTrunfo={ superTrunfo }
-          hasTrunfo
+          hasTrunfo={ temTrunfo }
           isSaveButtonDisabled={ oBotaoEstaDesabilitado }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.salvarCarta }
