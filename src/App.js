@@ -16,13 +16,13 @@ class App extends React.Component {
       superTrunfo: false,
       temTrunfo: false,
       oBotaoEstaDesabilitado: true,
-      baralhoSalvo: [],
+      cartasSalvadas: [],
     };
   }
 
   verificaSeTemTrunfo = () => {
-    const { baralhoSalvo } = this.state;
-    const trun = baralhoSalvo.some((element) => element.superTrun === true);
+    const { cartasSalvadas } = this.state;
+    const trun = cartasSalvadas.some((element) => element.superTrun === true);
     this.setState({
       temTrunfo: trun,
     });
@@ -112,7 +112,7 @@ class App extends React.Component {
       imagemDaCarta,
       raridade,
       superTrunfo,
-      baralhoSalvo,
+      cartasSalvadas,
     } = this.state;
 
     const infoCartaSalva = {
@@ -127,7 +127,7 @@ class App extends React.Component {
     };
 
     this.setState({
-      baralhoSalvo: [...baralhoSalvo, infoCartaSalva],
+      cartasSalvadas: [...cartasSalvadas, infoCartaSalva],
     }, () => { this.verificaSeTemTrunfo(); });
 
     this.resetarInfoCarta();
@@ -145,6 +145,7 @@ class App extends React.Component {
       superTrunfo,
       oBotaoEstaDesabilitado,
       temTrunfo,
+      cartasSalvadas,
     } = this.state;
 
     return (
@@ -173,6 +174,23 @@ class App extends React.Component {
           cardRare={ raridade }
           cardTrunfo={ superTrunfo }
         />
+
+        <div>
+          <h1>Lista de cartas</h1>
+          {
+            cartasSalvadas.map((carta) => (<Card
+              key={ carta.nome }
+              cardName={ carta.nome }
+              cardDescription={ carta.desc }
+              cardAttr1={ carta.atr1 }
+              cardAttr2={ carta.atr2 }
+              cardAttr3={ carta.atr3 }
+              cardImage={ carta.img }
+              cardRare={ carta.rari }
+              cardTrunfo={ carta.superTrun }
+            />))
+          }
+        </div>
       </>
     );
   }
