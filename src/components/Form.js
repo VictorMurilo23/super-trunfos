@@ -19,118 +19,139 @@ class Form extends React.Component {
     let exibeTrunfoOuNao;
     if (hasTrunfo === false) {
       exibeTrunfoOuNao = (
-        <label htmlFor="superTrunfo">
-          É um super trunfo?
-          <input
-            checked={ cardTrunfo }
-            type="checkbox"
-            name="superTrunfo"
-            id="superTrunfo"
-            data-testid="trunfo-input"
-            onChange={ onInputChange }
-          />
-        </label>);
+        <div className="superTrunfoCheckbox">
+          <label htmlFor="superTrunfo">
+            <input
+              checked={ cardTrunfo }
+              type="checkbox"
+              name="superTrunfo"
+              id="superTrunfo"
+              data-testid="trunfo-input"
+              onChange={ onInputChange }
+            />
+            É um super trunfo?
+          </label>
+        </div>);
     } else {
       exibeTrunfoOuNao = <p>Você já tem um Super Trunfo em seu baralho</p>;
     }
-
+    const maximo = 210;
     return (
       <form>
-        <label htmlFor="nomeDaCarta">
-          Nome:
-          <input
-            value={ cardName }
-            type="text"
-            name="nomeDaCarta"
-            id="nomeDaCarta"
-            required
-            data-testid="name-input"
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="nomeCartaInput">
+          <label htmlFor="nomeDaCarta">
+            Nome:
+            <br />
+            <input
+              value={ cardName }
+              type="text"
+              name="nomeDaCarta"
+              id="nomeDaCarta"
+              required
+              data-testid="name-input"
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
 
-        <label htmlFor="descricaoDaCarta">
-          Descrição:
-          <textarea
-            value={ cardDescription }
-            name="descricaoDaCarta"
-            id="descricaoDaCarta"
-            required
-            data-testid="description-input"
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="descricaoCartaInput">
+          <label htmlFor="descricaoDaCarta">
+            Descrição:
+            <br />
+            <textarea
+              value={ cardDescription }
+              name="descricaoDaCarta"
+              id="descricaoDaCarta"
+              required
+              data-testid="description-input"
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
 
-        <label htmlFor="atributo1">
-          Atributo1:
-          <input
-            value={ cardAttr1 }
-            type="number"
-            name="atributo1"
-            id="atributo1"
-            required
-            data-testid="attr1-input"
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="pontos">
+          <label htmlFor="atributo1">
+            Força:
+            <input
+              value={ cardAttr1 }
+              type="number"
+              name="atributo1"
+              id="atributo1"
+              required
+              data-testid="attr1-input"
+              onChange={ onInputChange }
+            />
+          </label>
+          <label htmlFor="atributo2">
+            Agilidade:
+            <input
+              value={ cardAttr2 }
+              type="number"
+              name="atributo2"
+              id="atributo2"
+              required
+              data-testid="attr2-input"
+              onChange={ onInputChange }
+            />
+          </label>
+          <label htmlFor="atributo3">
+            inteligência:
+            <input
+              value={ cardAttr3 }
+              type="number"
+              name="atributo3"
+              id="atributo3"
+              required
+              data-testid="attr3-input"
+              onChange={ onInputChange }
+            />
+          </label>
+          <p>
+            {
+              `Pontos restante: ${maximo - (Number(cardAttr1)
+              + Number(cardAttr2)
+              + Number(cardAttr3))}`
+            }
+          </p>
+        </div>
 
-        <label htmlFor="atributo2">
-          Atributo2:
-          <input
-            value={ cardAttr2 }
-            type="number"
-            name="atributo2"
-            id="atributo2"
-            required
-            data-testid="attr2-input"
-            onChange={ onInputChange }
-          />
-        </label>
+        <div className="imagemCartaInput">
+          <label htmlFor="imagemDaCarta">
+            Imagem:
+            <input
+              value={ cardImage }
+              type="text"
+              id="imagemDaCarta"
+              name="imagemDaCarta"
+              required
+              data-testid="image-input"
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
 
-        <label htmlFor="atributo3">
-          Atributo3:
-          <input
-            value={ cardAttr3 }
-            type="number"
-            name="atributo3"
-            id="atributo3"
-            required
-            data-testid="attr3-input"
-            onChange={ onInputChange }
-          />
-        </label>
-
-        <label htmlFor="imagemDaCarta">
-          Imagem:
-          <input
-            value={ cardImage }
-            type="text"
-            id="imagemDaCarta"
-            name="imagemDaCarta"
-            required
-            data-testid="image-input"
-            onChange={ onInputChange }
-          />
-        </label>
-
-        <label htmlFor="raridade">
-          Raridade:
-          <select
-            value={ cardRare }
-            name="raridade"
-            id="raridade"
-            data-testid="rare-input"
-            onChange={ onInputChange }
-          >
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
-          </select>
-        </label>
+        <div className="raridadeCartaInput">
+          <label htmlFor="raridade">
+            Raridade:
+            <br />
+            <select
+              value={ cardRare }
+              name="raridade"
+              id="raridade"
+              data-testid="rare-input"
+              onChange={ onInputChange }
+            >
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
+            </select>
+          </label>
+        </div>
 
         {exibeTrunfoOuNao}
 
         <button
+          className="botaoSalvar"
           type="submit"
           disabled={ isSaveButtonDisabled }
           data-testid="save-button"

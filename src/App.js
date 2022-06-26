@@ -150,33 +150,39 @@ class App extends React.Component {
 
     return (
       <>
-        <Form
-          cardName={ nomeDaCarta }
-          cardDescription={ descricaoDaCarta }
-          cardAttr1={ atributo1 }
-          cardAttr2={ atributo2 }
-          cardAttr3={ atributo3 }
-          cardImage={ imagemDaCarta }
-          cardRare={ raridade }
-          cardTrunfo={ superTrunfo }
-          hasTrunfo={ temTrunfo }
-          isSaveButtonDisabled={ oBotaoEstaDesabilitado }
-          onInputChange={ this.handleChange }
-          onSaveButtonClick={ this.salvarCarta }
-        />
-        <Card
-          cardName={ nomeDaCarta }
-          cardDescription={ descricaoDaCarta }
-          cardAttr1={ atributo1 }
-          cardAttr2={ atributo2 }
-          cardAttr3={ atributo3 }
-          cardImage={ imagemDaCarta }
-          cardRare={ raridade }
-          cardTrunfo={ superTrunfo }
-        />
+        <div className="criacaoDaCarta">
+          <div className="formulario">
+            <Form
+              cardName={ nomeDaCarta }
+              cardDescription={ descricaoDaCarta }
+              cardAttr1={ atributo1 }
+              cardAttr2={ atributo2 }
+              cardAttr3={ atributo3 }
+              cardImage={ imagemDaCarta }
+              cardRare={ raridade }
+              cardTrunfo={ superTrunfo }
+              hasTrunfo={ temTrunfo }
+              isSaveButtonDisabled={ oBotaoEstaDesabilitado }
+              onInputChange={ this.handleChange }
+              onSaveButtonClick={ this.salvarCarta }
+            />
+          </div>
+          <Card
+            cardName={ nomeDaCarta }
+            cardDescription={ descricaoDaCarta }
+            cardAttr1={ atributo1 }
+            cardAttr2={ atributo2 }
+            cardAttr3={ atributo3 }
+            cardImage={ imagemDaCarta }
+            cardRare={ raridade }
+            cardTrunfo={ superTrunfo }
+          />
+        </div>
 
-        <div>
-          <h1>Lista de cartas</h1>
+        <div className="listaDeCartas">
+          <div className="listaDeCartasTitulo">
+            <h1>Lista de cartas</h1>
+          </div>
           {
             cartasSalvadas.map((carta, index) => (
               <div key={ carta.nome } className="cartaContainer">

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import semPersonagem from '../images/semPersonagem.png';
 
 class Card extends React.Component {
   render() {
@@ -16,18 +17,35 @@ class Card extends React.Component {
 
     return (
       <div className="carta">
-        <h1 data-testid="name-card">{cardName}</h1>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <h2 data-testid="description-card">{cardDescription}</h2>
-        <p data-testid="attr1-card">{cardAttr1}</p>
-        <p data-testid="attr2-card">{cardAttr2}</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <p data-testid="rare-card">{cardRare}</p>
+        <div className="nomeCartaContainer">
+          <h1 data-testid="name-card">{cardName}</h1>
+        </div>
+        <div className="imagemCartaContainer">
+          <img
+            src={ cardImage }
+            alt={ cardName }
+            onError={ (event) => {
+              event.target.src = semPersonagem;
+            } }
+            data-testid="image-card"
+          />
+        </div>
+        <p data-testid="description-card" className="descricao">{cardDescription}</p>
+        <p data-testid="attr1-card" className="atributo1">
+          {`Força: ${cardAttr1}`}
+        </p>
+        <p data-testid="attr2-card" className="atributo2">
+          {`Agilidade: ${cardAttr2}`}
+        </p>
+        <p data-testid="attr3-card" className="atributo3">
+          {`Inteligência: ${cardAttr3}`}
+        </p>
         {
           cardTrunfo === true
-            ? <p data-testid="trunfo-card">Super Trunfo</p>
+            ? <p data-testid="trunfo-card" className="superTrunfo">Super Trunfo</p>
             : <p />
         }
+        <p data-testid="rare-card" className="raridade">{cardRare}</p>
       </div>
     );
   }
