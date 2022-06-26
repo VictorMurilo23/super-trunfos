@@ -178,17 +178,29 @@ class App extends React.Component {
         <div>
           <h1>Lista de cartas</h1>
           {
-            cartasSalvadas.map((carta) => (<Card
-              key={ carta.nome }
-              cardName={ carta.nome }
-              cardDescription={ carta.desc }
-              cardAttr1={ carta.atr1 }
-              cardAttr2={ carta.atr2 }
-              cardAttr3={ carta.atr3 }
-              cardImage={ carta.img }
-              cardRare={ carta.rari }
-              cardTrunfo={ carta.superTrun }
-            />))
+            cartasSalvadas.map((carta, index) => (
+              <div key={ carta.nome } className="cartaContainer">
+                <Card
+                  cardName={ carta.nome }
+                  cardDescription={ carta.desc }
+                  cardAttr1={ carta.atr1 }
+                  cardAttr2={ carta.atr2 }
+                  cardAttr3={ carta.atr3 }
+                  cardImage={ carta.img }
+                  cardRare={ carta.rari }
+                  cardTrunfo={ carta.superTrun }
+                />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => {
+                    cartasSalvadas.splice(index, 1);
+                    this.verificaSeTemTrunfo();
+                  } }
+                >
+                  Deletar
+                </button>
+              </div>))
           }
         </div>
       </>
