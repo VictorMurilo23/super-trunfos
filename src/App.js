@@ -189,7 +189,7 @@ class App extends React.Component {
             } }
             data-testid="rare-filter"
           >
-            <option value="todos" selected>todos</option>
+            <option value="todas">todas</option>
             <option value="normal">normal</option>
             <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
@@ -209,7 +209,7 @@ class App extends React.Component {
               })
               .filter((carta) => {
                 const { buscarPorRaridade } = this.state;
-                if (buscarPorRaridade === 'todos' || buscarPorRaridade === '') {
+                if (buscarPorRaridade === 'todas' || buscarPorRaridade === '') {
                   return carta;
                 }
                 return carta.rari === buscarPorRaridade;
