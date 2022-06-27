@@ -17,6 +17,8 @@ class App extends React.Component {
       temTrunfo: false,
       oBotaoEstaDesabilitado: true,
       cartasSalvadas: [],
+      buscarPorNome: '',
+      buscarPorRaridade: '',
     };
   }
 
@@ -29,14 +31,14 @@ class App extends React.Component {
   }
 
   resetarInfoCarta = () => {
-    this.setState({
-      nomeDaCarta: '',
+    this.setState({ nomeDaCarta: '',
       descricaoDaCarta: '',
       atributo1: '0',
       atributo2: '0',
       atributo3: '0',
       imagemDaCarta: '',
       raridade: 'normal',
+      superTrunfo: false,
     });
   }
 
@@ -104,16 +106,8 @@ class App extends React.Component {
   salvarCarta = (event) => {
     event.preventDefault();
     const {
-      nomeDaCarta,
-      descricaoDaCarta,
-      atributo1,
-      atributo2,
-      atributo3,
-      imagemDaCarta,
-      raridade,
-      superTrunfo,
-      cartasSalvadas,
-    } = this.state;
+      nomeDaCarta, descricaoDaCarta, atributo1, atributo2, atributo3, imagemDaCarta,
+      raridade, superTrunfo, cartasSalvadas } = this.state;
 
     const infoCartaSalva = {
       nome: nomeDaCarta,
@@ -135,17 +129,8 @@ class App extends React.Component {
 
   render() {
     const {
-      nomeDaCarta,
-      descricaoDaCarta,
-      atributo1,
-      atributo2,
-      atributo3,
-      imagemDaCarta,
-      raridade,
-      superTrunfo,
-      oBotaoEstaDesabilitado,
-      temTrunfo,
-      cartasSalvadas,
+      nomeDaCarta, descricaoDaCarta, atributo1, atributo2, atributo3, imagemDaCarta,
+      raridade, superTrunfo, oBotaoEstaDesabilitado, temTrunfo, cartasSalvadas,
     } = this.state;
 
     return (
@@ -179,34 +164,79 @@ class App extends React.Component {
           />
         </div>
 
+        <div className="listaDeCartasTitulo">
+          <h1>Lista de cartas</h1>
+        </div>
+
+        <div>
+          <h2>Filtros de busca</h2>
+          <input
+            type="text"
+            placeholder="Nome da carta"
+            data-testid="name-filter"
+            onChange={ (event) => {
+              this.setState({
+                buscarPorNome: event.target.value,
+              });
+            } }
+          />
+
+          <select
+            onChange={ (event) => {
+              this.setState({
+                buscarPorRaridade: event.target.value,
+              });
+            } }
+            data-testid="rare-filter"
+          >
+            <option value="todos" selected>todos</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+
+        </div>
+
         <div className="listaDeCartas">
-          <div className="listaDeCartasTitulo">
-            <h1>Lista de cartas</h1>
-          </div>
           {
-            cartasSalvadas.map((carta, index) => (
-              <div key={ carta.nome } className="cartaContainer">
-                <Card
-                  cardName={ carta.nome }
-                  cardDescription={ carta.desc }
-                  cardAttr1={ carta.atr1 }
-                  cardAttr2={ carta.atr2 }
-                  cardAttr3={ carta.atr3 }
-                  cardImage={ carta.img }
-                  cardRare={ carta.rari }
-                  cardTrunfo={ carta.superTrun }
-                />
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  onClick={ () => {
-                    cartasSalvadas.splice(index, 1);
-                    this.verificaSeTemTrunfo();
-                  } }
-                >
-                  Deletar
-                </button>
-              </div>))
+            cartasSalvadas
+              .filter((carta) => {
+                const { buscarPorNome } = this.state;
+                if (buscarPorNome === '') {
+                  return carta;
+                }
+                return carta.nome.toLowerCase().includes(buscarPorNome.toLowerCase());
+              })
+              .filter((carta) => {
+                const { buscarPorRaridade } = this.state;
+                if (buscarPorRaridade === 'todos' || buscarPorRaridade === '') {
+                  return carta;
+                }
+                return carta.rari === buscarPorRaridade;
+              })
+              .map((carta, index) => (
+                <div key={ carta.nome } className="cartaContainer">
+                  <Card
+                    cardName={ carta.nome }
+                    cardDescription={ carta.desc }
+                    cardAttr1={ carta.atr1 }
+                    cardAttr2={ carta.atr2 }
+                    cardAttr3={ carta.atr3 }
+                    cardImage={ carta.img }
+                    cardRare={ carta.rari }
+                    cardTrunfo={ carta.superTrun }
+                  />
+                  <button
+                    type="button"
+                    data-testid="delete-button"
+                    onClick={ () => {
+                      cartasSalvadas.splice(index, 1);
+                      this.verificaSeTemTrunfo();
+                    } }
+                  >
+                    Deletar
+                  </button>
+                </div>))
           }
         </div>
       </>
