@@ -177,21 +177,6 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
-};
-
-Form.defaultProps = {
-  cardName: 'Carta',
-  cardDescription: 'Descrição',
-  cardAttr1: 'Atributo 1',
-  cardAttr2: 'Atributo 2',
-  cardAttr3: 'Atributo 3',
-  cardImage: 'Imagem',
-  cardRare: 'Raridade',
-  cardTrunfo: true,
-  hasTrunfo: false,
-  isSaveButtonDisabled: true,
-  onInputChange: () => { console.log('oi'); },
-  onSaveButtonClick: () => { console.log('oi'); },
-};
+}.isRequired;
 
 export default Form;

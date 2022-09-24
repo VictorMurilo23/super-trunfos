@@ -46,11 +46,6 @@ class FiltrosDeBusca extends React.Component {
 FiltrosDeBusca.propTypes = {
   buscaSuperTrunfo: PropTypes.bool,
   onInputChange: PropTypes.func,
-};
-
-FiltrosDeBusca.defaultProps = {
-  buscaSuperTrunfo: false,
-  onInputChange: () => { console.log('oi'); },
-};
+}.isRequired;
 
 export default FiltrosDeBusca;

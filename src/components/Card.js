@@ -30,16 +30,20 @@ class Card extends React.Component {
             data-testid="image-card"
           />
         </div>
-        <p data-testid="description-card" className="descricao">{cardDescription}</p>
-        <p data-testid="attr1-card" className="atributo1">
-          {`Força: ${cardAttr1}`}
-        </p>
-        <p data-testid="attr2-card" className="atributo2">
-          {`Agilidade: ${cardAttr2}`}
-        </p>
-        <p data-testid="attr3-card" className="atributo3">
-          {`Inteligência: ${cardAttr3}`}
-        </p>
+        <div className="cardDescContainer">
+          <p data-testid="description-card" className="cardDesc">{cardDescription}</p>
+        </div>
+        <div className="cardAttrContaineer">
+          <p data-testid="attr1-card" className="atributo1">
+            {`Força: ${cardAttr1}`}
+          </p>
+          <p data-testid="attr2-card" className="atributo2">
+            {`Agilidade: ${cardAttr2}`}
+          </p>
+          <p data-testid="attr3-card" className="atributo3">
+            {`Inteligência: ${cardAttr3}`}
+          </p>
+        </div>
         {
           cardTrunfo === true
             ? <p data-testid="trunfo-card" className="superTrunfo">Super Trunfo</p>
@@ -60,17 +64,6 @@ Card.propTypes = {
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
-};
-
-Card.defaultProps = {
-  cardName: 'Carta',
-  cardDescription: 'Descrição',
-  cardAttr1: 'Atributo 1',
-  cardAttr2: 'Atributo 2',
-  cardAttr3: 'Atributo 3',
-  cardImage: 'Imagem',
-  cardRare: 'Raridade',
-  cardTrunfo: true,
-};
+}.isRequired;
 
 export default Card;

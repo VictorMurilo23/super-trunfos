@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import FiltrosDeBusca from './components/FiltrosDeBusca';
+import PreRenderedCards from './components/PreRenderedCards';
 
 class App extends React.Component {
   constructor() {
@@ -202,6 +203,7 @@ class App extends React.Component {
         </div>
 
         <div className="listaDeCartas">
+          <PreRenderedCards />
           {
             filtro.map((carta, index) => (
               <div key={ carta.nome } className="cartaContainer">
@@ -218,6 +220,7 @@ class App extends React.Component {
                 <button
                   type="button"
                   data-testid="delete-button"
+                  className="deleteBtn"
                   onClick={ () => {
                     cartasSalvadas.splice(index, 1);
                     this.verificaSeTemTrunfo();
@@ -232,5 +235,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;

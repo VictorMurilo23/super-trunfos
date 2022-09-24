@@ -21,14 +21,6 @@
   flex-flow: column wrap;
 }
 
-.nomeCartaInput, .descricaoCartaInput, .imagemCartaInput {
-  padding-bottom: 10px;
-}
-
-.raridadeCartaInput, .superTrunfoCheckbox {
-  padding-bottom: 10px;
-}
-
 .pontos {
   align-items: flex-start;
   display: flex;
@@ -58,35 +50,23 @@
   width: 7em;
 }
 
-.criacaoDaCarta .carta {
-  align-items: center;
-  background-color: black;
-  border: 1px solid black;
-  border-radius: 15px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  height: 50%;
-  width: 250px;
-}
-
 .nomeCartaContainer {
+  align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  height: 5em;
   justify-content: center;
-  overflow-wrap: break-word;
-  width: 80%;
+  overflow-wrap: anywhere;
 }
 
 .nomeCartaContainer h1 {
+  font-size: 1.4rem;
+  padding: 5px;
   text-align: center;
-  width: 100%;
 }
 
 .imagemCartaContainer {
   background-color: white;
   display: flex;
-  margin-top: 5px;
   width: 90%;
 }
 
@@ -95,19 +75,19 @@
   width: 100%;
 }
 
-.descricao {
-  align-self: center;
+.cardDescContainer {
+  align-items: center;
   border: 1px solid white;
-  border-radius: 10px;
-  margin: 5px;
-  overflow-wrap: break-word;
-  padding: 2px;
-  text-align: center;
+  display: flex;
+  height: 5em;
+  justify-content: center;
+  overflow-wrap: anywhere;
+  overflow-y: hidden;
   width: 80%;
 }
 
-.atributo3 {
-  padding-bottom: 3px;
+.cardDesc {
+  padding: 5px;
 }
 
 .raridade, .superTrunfo {
@@ -123,20 +103,22 @@
 .listaDeCartas {
   display: flex;
   flex-wrap: wrap;
-  padding: 15px;
+  justify-content: center;
+
+  /* padding: 15px; */
 }
 
 .listaDeCartas .cartaContainer {
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   margin-right: 2em;
   padding-bottom: 10px;
   padding-top: 10px;
+  position: relative;
 }
 
-.cartaContainer .carta {
+.carta {
   align-items: center;
   background-color: black;
   border: 1px solid black;
@@ -144,12 +126,19 @@
   color: white;
   display: flex;
   flex-direction: column;
-  height: 50%;
-  max-width: 250px;
+  height: 100%;
+  width: 20em;
 }
 
 .listaDeCartas .cartaContainer button {
   align-self: center;
   margin-top: 5px;
   width: 5em;
+}
+
+.deleteBtn {
+  background-color: red;
+  position: absolute;
+  right: 1em;
+  top: 1em;
 }
