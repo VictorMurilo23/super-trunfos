@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import FiltrosDeBusca from './components/FiltrosDeBusca';
-import PreRenderedCards from './components/PreRenderedCards';
+import cards from './data/cards';
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +18,7 @@ class App extends React.Component {
       superTrunfo: false,
       temTrunfo: false,
       oBotaoEstaDesabilitado: true,
-      cartasSalvadas: [],
+      cartasSalvadas: [...cards],
       buscarPorNome: '',
       buscarPorRaridade: '',
       procurandoPorTrunfo: false,
@@ -203,7 +203,6 @@ class App extends React.Component {
         </div>
 
         <div className="listaDeCartas">
-          <PreRenderedCards />
           {
             filtro.map((carta, index) => (
               <div key={ carta.nome } className="cartaContainer">
@@ -217,17 +216,22 @@ class App extends React.Component {
                   cardRare={ carta.rari }
                   cardTrunfo={ carta.superTrun }
                 />
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  className="deleteBtn"
-                  onClick={ () => {
-                    cartasSalvadas.splice(index, 1);
-                    this.verificaSeTemTrunfo();
-                  } }
-                >
-                  Deletar
-                </button>
+                {
+                  !carta.indeletavel
+                  && (
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      className="deleteBtn"
+                      onClick={ () => {
+                        cartasSalvadas.splice(index, 1);
+                        this.verificaSeTemTrunfo();
+                      } }
+                    >
+                      Deletar
+                    </button>)
+                }
+
               </div>))
           }
         </div>

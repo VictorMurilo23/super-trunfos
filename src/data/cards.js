@@ -20,6 +20,7 @@ const cards = [
     img: pernalongaImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Isshin, a Divindade da Espada',
@@ -30,6 +31,7 @@ const cards = [
     img: isshinImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Joker',
@@ -40,6 +42,7 @@ const cards = [
     img: jokerImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Dante Sparda',
@@ -50,6 +53,7 @@ const cards = [
     img: danteImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Vergil Sparda',
@@ -60,6 +64,7 @@ const cards = [
     img: vergilImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Atem',
@@ -70,6 +75,7 @@ const cards = [
     img: atemImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Meruem',
@@ -80,6 +86,7 @@ const cards = [
     img: meruemImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Denji',
@@ -90,6 +97,7 @@ const cards = [
     img: denjiImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
   {
     nome: 'Rei sem nome',
@@ -101,6 +109,7 @@ const cards = [
     img: nameLessKingImage,
     rari: muitoRaro,
     superTrun: false,
+    indeletavel: true,
   },
 ];
 
