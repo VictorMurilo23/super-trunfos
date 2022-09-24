@@ -231,7 +231,6 @@ class App extends React.Component {
                       Deletar
                     </button>)
                 }
-
               </div>))
           }
         </div>
