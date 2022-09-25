@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import context from '../context/myContext';
 
-class FiltrosDeBusca extends React.Component {
-  render() {
-    const { buscaSuperTrunfo, onInputChange } = this.props;
-    return (
-      <>
-        <h2>Filtros de busca</h2>
+function FiltrosDeBusca() {
+  const { handleChangeFilters, filters } = useContext(context);
+  const { procurandoPorTrunfo } = filters;
+  return (
+    <div className="filtersContainer">
+      <h2>Todas as cartas</h2>
+      <div className="filters">
         <input
           name="buscarPorNome"
+          className="filterInput"
           type="text"
           placeholder="Nome da carta"
-          disabled={ buscaSuperTrunfo }
+          disabled={ procurandoPorTrunfo }
           data-testid="name-filter"
-          onChange={ onInputChange }
+          onChange={ handleChangeFilters }
         />
-
         <select
           name="buscarPorRaridade"
-          onChange={ onInputChange }
-          disabled={ buscaSuperTrunfo }
+          className="filterInput"
+          onChange={ handleChangeFilters }
+          disabled={ procurandoPorTrunfo }
           data-testid="rare-filter"
         >
           <option value="todas">todas</option>
@@ -27,20 +30,19 @@ class FiltrosDeBusca extends React.Component {
           <option value="raro">raro</option>
           <option value="muito raro">muito raro</option>
         </select>
-
-        <label htmlFor="filtroSuperTrunfo">
+        <label htmlFor="filtroSuperTrunfo" className="filtroSuperTrunfo">
           <input
-            onChange={ onInputChange }
+            onChange={ handleChangeFilters }
             type="checkbox"
             id="filtroSuperTrunfo"
             data-testid="trunfo-filter"
             name="procurandoPorTrunfo"
           />
-          Super Trunfo
+          <span>Super Trunfo</span>
         </label>
-      </>
-    );
-  }
+      </div>
+    </div>
+  );
 }
 
 FiltrosDeBusca.propTypes = {

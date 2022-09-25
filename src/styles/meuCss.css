@@ -5,43 +5,81 @@
   padding: 0;
 }
 
+.carta {
+  align-items: center;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 20em;
+}
+
 .criacaoDaCarta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 24px;
+}
+
+.criacaoDaCarta .carta {
+  position: relative;
+}
+
+.formulario h1 {
+  text-align: center;
 }
 
 .criacaoDaCarta .formulario {
+  align-self: center;
   display: flex;
-  padding: 10px;
+  flex-direction: column;
 }
 
 .criacaoDaCarta .formulario form {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
+  gap: 8px;
+}
+
+.formInput {
+  font-size: 1rem;
+  padding: 5px;
+  width: 20em;
 }
 
 .pontos {
   align-items: flex-start;
   display: flex;
   flex-flow: column wrap;
-  margin-bottom: 10px;
+  gap: 7px;
+
+  /* margin-bottom: 10px; */
 }
 
-.pontos label {
-  padding-bottom: 5px;
+.pontos .pointsQuant {
+  align-self: center;
+
+  /* background-color: red; */
+  padding-top: 5px;
 }
 
-.pontos label input {
-  margin-left: 5px;
+
+.superTrunfoCheckbox label {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+
+  /* gap: 5px; */
 }
 
-.imagemCartaInput label input {
-  margin-left: 5px;
-}
 
-.superTrunfoCheckbox label input {
-  margin-right: 5px;
+.superTrunfoCheckbox label span {
+  padding: 5px;
 }
 
 .botaoSalvar {
@@ -66,6 +104,7 @@
 
 .imagemCartaContainer {
   background-color: white;
+  border: 2px solid white;
   display: flex;
   width: 90%;
 }
@@ -92,9 +131,20 @@
   padding: 5px;
 }
 
-.raridade, .superTrunfo {
-  align-self: flex-end;
-  padding-right: 3px;
+.cardAttrContaineer {
+  margin-bottom: 18px;
+}
+
+.raridade {
+  bottom: 0.3em;
+  position: absolute;
+  right: 0.5em;
+}
+
+.superTrunfo {
+  bottom: 0.3em;
+  left: 0.5em;
+  position: absolute;
 }
 
 .listaDeCartasTitulo {
@@ -117,33 +167,64 @@
   position: relative;
 }
 
-.carta {
-  align-items: center;
-  background-color: black;
-  border: 1px solid black;
-  border-radius: 15px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-
-  /* gap: 5px; */
-  height: 100%;
-  width: 20em;
-}
-
 .listaDeCartas .cartaContainer button {
   align-self: center;
   margin-top: 5px;
   width: 5em;
 }
 
+.deleteBtnContainer {
+  display: flex;
+  position: absolute;
+  right: 0.3em;
+  top: 0;
+  width: 1.2em;
+}
+
 .deleteBtn {
   background-color: red;
   border: 1px solid black;
+  border-radius: 100%;
   color: white;
   font-weight: 700;
-  padding: 2px;
-  position: absolute;
-  right: 1em;
-  top: 0.1em;
+  height: 1.5em;
+}
+
+.filtersContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 3em;
+}
+
+.filters {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.filtroSuperTrunfo {
+  display: flex;
+  gap: 4px;
+}
+
+.filterInput {
+  font-size: 0.9rem;
+  height: 3em;
+  padding: 5px;
+  width: 15em;
+}
+
+@media ( max-width : 700px ) {
+
+  .criacaoDaCarta {
+    gap: 16px;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
 }
