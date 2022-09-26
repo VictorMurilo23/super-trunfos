@@ -3,15 +3,16 @@ import context from '../context/myContext';
 import Card from './Card';
 
 export default function CardsList() {
-  const { filteredResults, deleteCard } = useContext(context);
+  const { filteredResults, deleteCard, addCardToDeck, deck } = useContext(context);
+  const five = 5;
   return (
     <div className="listaDeCartas">
       {
-        filteredResults.map((carta, index) => (
-          <div key={ `${carta.nomeDaCarta}, ${index}` } className="cartaContainer">
-            <Card cardInfo={ carta } />
+        filteredResults.map((card, index) => (
+          <div key={ `${card.nomeDaCarta}, ${index}` } className="cartaContainer">
+            <Card cardInfo={ card } />
             {
-              !carta.indeletavel
+              !card.indeletavel
                   && (
                     <div className="deleteBtnContainer">
                       <button
@@ -26,6 +27,13 @@ export default function CardsList() {
                       </button>
                     </div>)
             }
+            <button
+              type="button"
+              onClick={ () => addCardToDeck(card) }
+              disabled={ deck.length === five }
+            >
+              Adicionar ao deck
+            </button>
           </div>))
       }
     </div>

@@ -19,7 +19,7 @@ function Form() {
     if (temTrunfo === false) {
       return (
         <div className="superTrunfoCheckbox">
-          <label htmlFor="superTrunfo">
+          <label htmlFor="superTrunfo" className="trunfo">
             <input
               checked={ superTrunfo }
               type="checkbox"

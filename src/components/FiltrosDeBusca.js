@@ -30,7 +30,7 @@ function FiltrosDeBusca() {
           <option value="raro">raro</option>
           <option value="muito raro">muito raro</option>
         </select>
-        <label htmlFor="filtroSuperTrunfo" className="filtroSuperTrunfo">
+        <label htmlFor="filtroSuperTrunfo" className="filtroSuperTrunfo trunfo">
           <input
             onChange={ handleChangeFilters }
             type="checkbox"

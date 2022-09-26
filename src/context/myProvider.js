@@ -27,6 +27,101 @@ export default function Provider({ children }) {
   const [cardCustom, setCardCustom] = useState(cardInitialState);
   const [filters, setFilters] = useState(filtersInitialState);
   const [savedCards, setSavedCards] = useState([...cards]);
+  const [deck, setDeck] = useState([]);
+  const [opponentDeck, setOpponentDeck] = useState([]);
+  const [playerCard, setPlayerCard] = useState({});
+  const [opponentCard, setOpponentCard] = useState({});
+  const [compare, setCompare] = useState(false);
+  const [attribute, setAttribute] = useState('');
+  const [score, setScore] = useState(0);
+  // const [gaming, setGaming] = useState(false);
+  const [startGame, setStartGame] = useState(false);
+  const [finishGame, setFinishGame] = useState(false);
+  const deckMaxLength = 5;
+
+  const endGame = () => {
+    setFinishGame(true);
+  };
+
+  const updateScore = () => {
+    setScore((prevState) => prevState + 1);
+  };
+
+  const changeCompare = () => {
+    setCompare((prevState) => !prevState);
+  };
+
+  const playAgain = (player, opponent) => {
+    const filterPlayer = deck
+      .filter((element) => element.nomeDaCarta !== player.nomeDaCarta);
+    setDeck(filterPlayer);
+    const filterOpponent = opponentDeck
+      .filter((element) => element.nomeDaCarta !== opponent.nomeDaCarta);
+    setOpponentDeck(filterOpponent);
+    if (deck.length === 1) {
+      endGame();
+    }
+
+    setPlayerCard({});
+    setOpponentCard({});
+    setAttribute('');
+    changeCompare();
+  };
+
+  const saveAttribute = (string) => {
+    switch (string) {
+    case 'Força':
+      setAttribute('atributo1');
+      break;
+    case 'Agilidade':
+      setAttribute('atributo2');
+      break;
+    default:
+      setAttribute('atributo3');
+    }
+  };
+
+  const savePlayerCard = (obj) => {
+    setPlayerCard(obj);
+    const randElement = opponentDeck[Math.floor(Math.random() * opponentDeck.length)];
+    setOpponentCard(randElement);
+  };
+
+  const createOpponentDeck = () => {
+    const random = 0.5;
+    const shuffled = [...savedCards].sort(() => Math.random() - random);
+    setOpponentDeck([shuffled[0], shuffled[1], shuffled[2], shuffled[3], shuffled[4]]);
+  };
+
+  const addCardToDeck = (card) => {
+    if (deck.length < deckMaxLength) {
+      const { nomeDaCarta,
+        descricaoDaCarta,
+        atributo1,
+        atributo2,
+        atributo3,
+        imagemDaCarta,
+        raridade,
+        superTrunfo } = card;
+
+      const cardObj = {
+        nomeDaCarta,
+        descricaoDaCarta,
+        atributo1,
+        atributo2,
+        atributo3,
+        imagemDaCarta,
+        raridade,
+        superTrunfo,
+      };
+      setDeck((prevState) => [...prevState, cardObj]);
+    }
+  };
+
+  const removeFromDeck = (card) => {
+    const fi = deck.filter((element) => element.nomeDaCarta !== card.nomeDaCarta);
+    setDeck(fi);
+  };
 
   const resetarInfoCarta = () => {
     setCardCustom({
@@ -142,11 +237,30 @@ export default function Provider({ children }) {
   const contextValue = {
     cardCustom,
     filters,
-    salvarCarta,
-    handleChange,
+    deck,
+    playerCard,
+    opponentCard,
+    compare,
+    opponentDeck,
     filteredResults,
+    attribute,
+    score,
+    finishGame,
+    salvarCarta,
+    handleChange, // eslint-disable-next-line max-lines
+    savePlayerCard,
+    startGame,
+    setStartGame,
     deleteCard,
     handleChangeFilters,
+    addCardToDeck,
+    removeFromDeck,
+    createOpponentDeck,
+    changeCompare,
+    saveAttribute,
+    updateScore,
+    playAgain,
+    endGame,
   };
 
   return (

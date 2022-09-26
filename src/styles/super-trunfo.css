@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+textarea {
+  resize: none;
+}
+
+select {
+  cursor: pointer;
+}
+
 .carta {
   align-items: center;
   background-color: black;
@@ -14,6 +22,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
   width: 20em;
 }
 
@@ -84,6 +93,7 @@
 
 .botaoSalvar {
   align-self: center;
+  cursor: pointer;
   height: 2.5em;
   width: 7em;
 }
@@ -186,8 +196,13 @@
   border: 1px solid black;
   border-radius: 100%;
   color: white;
+  cursor: pointer;
   font-weight: 700;
   height: 1.5em;
+}
+
+.deleteBtn:disabled {
+  cursor: auto;
 }
 
 .filtersContainer {
@@ -216,6 +231,30 @@
   height: 3em;
   padding: 5px;
   width: 15em;
+}
+
+.trunfo {
+  cursor: pointer;
+}
+
+.playerDeck {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+
+.playBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.playBtn {
+  font-size: 1.5rem;
+
+  /* height: 5em; */
+  width: 20em;
 }
 
 @media ( max-width : 700px ) {
