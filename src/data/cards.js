@@ -9,6 +9,10 @@ const denjiImage = require('../images/denji.webp');
 const nameLessKingImage = require('../images/rei-sem-nome.jpg');
 const jetStreamSamImage = require('../images/jetstreamsam.jpg');
 const aangImage = require('../images/Aang.webp');
+const goblinSlayerImage = require('../images/goblin-slayer.jpg');
+const gutsImage = require('../images/guts.jpg');
+const gonImage = require('../images/gon.jpg');
+const killuaImage = require('../images/killua.jpg');
 
 const muitoRaro = 'muito raro';
 
@@ -131,6 +135,50 @@ const cards = [
     atributo2: 90,
     atributo3: 60,
     imagemDaCarta: aangImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Goblin Slayer',
+    descricaoDaCarta: 'Só tem interesse em matar goblins.',
+    atributo1: 60,
+    atributo2: 60,
+    atributo3: 90,
+    imagemDaCarta: goblinSlayerImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Guts',
+    descricaoDaCarta: 'Um homem com uma força de vontade admirável.',
+    atributo1: 90,
+    atributo2: 60,
+    atributo3: 60,
+    imagemDaCarta: gutsImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Gon Freecss',
+    descricaoDaCarta: 'Amiguinho do Killua.',
+    atributo1: 90,
+    atributo2: 90,
+    atributo3: 30,
+    imagemDaCarta: gonImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Killua Zoldyck',
+    descricaoDaCarta: 'Amiguinho do Gon.',
+    atributo1: 30,
+    atributo2: 90,
+    atributo3: 90,
+    imagemDaCarta: killuaImage,
     raridade: muitoRaro,
     superTrunfo: false,
     indeletavel: true,

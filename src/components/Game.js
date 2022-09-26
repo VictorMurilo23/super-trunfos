@@ -9,7 +9,6 @@ export default function Game() {
   const { deck, finishGame, setStartGame, startGame } = useContext(context);
 
   if (finishGame) {
-    setStartGame(false);
     return (<GameResults />);
   }
 
