@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/super-trunfos/static/css/main.c2d5f5d0.css",
+    "main.js": "/super-trunfos/static/js/main.9fb58dd4.js",
+    "static/media/esqueleto.gif": "/super-trunfos/static/media/esqueleto.43d0f206350033f96f4b.gif",
+    "static/media/joker.webp": "/super-trunfos/static/media/joker.210513e0fcc4fd616589.webp",
+    "static/media/Isshin.png": "/super-trunfos/static/media/Isshin.68c0a7565e0bd19a8bf5.png",
+    "static/media/fantasmatico.jpg": "/super-trunfos/static/media/fantasmatico.e236fbeb5f049f2a5a8a.jpg",
+    "static/media/mewtwo.jpg": "/super-trunfos/static/media/mewtwo.95452bd49e3411afb2db.jpg",
+    "static/media/rei-sem-nome.jpg": "/super-trunfos/static/media/rei-sem-nome.2eae332a86cf82be53a4.jpg",
+    "static/media/denji.webp": "/super-trunfos/static/media/denji.584c399f81f234b67f05.webp",
+    "static/media/jetstreamsam.jpg": "/super-trunfos/static/media/jetstreamsam.2c9b49e636d917fc8a60.jpg",
+    "static/media/killua.jpg": "/super-trunfos/static/media/killua.df8103dcfb08f290d191.jpg",
+    "static/media/gon.jpg": "/super-trunfos/static/media/gon.144e1de1d40934e8612d.jpg",
+    "static/media/guts.jpg": "/super-trunfos/static/media/guts.01575c9ae93ff706eb74.jpg",
+    "static/media/goblin-slayer.jpg": "/super-trunfos/static/media/goblin-slayer.26bf673bbc04391fcb5f.jpg",
+    "static/media/soldado-esqueleto.webp": "/super-trunfos/static/media/soldado-esqueleto.35f2395a9cc25885006c.webp",
+    "static/media/Pernalonga-Rei.webp": "/super-trunfos/static/media/Pernalonga-Rei.426959d224bc650e2814.webp",
+    "static/media/dante.jpg": "/super-trunfos/static/media/dante.55ad1ca92c4a7da77db9.jpg",
+    "static/media/vergil.webp": "/super-trunfos/static/media/vergil.e3c16da613abe9357bea.webp",
+    "static/media/Aang.webp": "/super-trunfos/static/media/Aang.807c0ac60c99cc00e161.webp",
+    "static/media/atem.jpeg": "/super-trunfos/static/media/atem.5cbd2c707ecdacbca45e.jpeg",
+    "static/media/meruem.webp": "/super-trunfos/static/media/meruem.75abb55628c8781b0b8e.webp",
+    "index.html": "/super-trunfos/index.html",
+    "main.c2d5f5d0.css.map": "/super-trunfos/static/css/main.c2d5f5d0.css.map",
+    "main.9fb58dd4.js.map": "/super-trunfos/static/js/main.9fb58dd4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2d5f5d0.css",
+    "static/js/main.9fb58dd4.js"
+  ]
+}
