@@ -21,6 +21,8 @@ Após a escolha, o atributo escolhido é comparado com o atributo da carta do op
 A parte de escolha e comparação de carta é repetida até as cartas do jogador serem 0.
 
 Esse é o jogo, simples não?
+## Link da aplicação
+https://victormurilo23.github.io/super-trunfos/
 
 ## Exemplo de deck
 
