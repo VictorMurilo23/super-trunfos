@@ -13,6 +13,10 @@ const goblinSlayerImage = require('../images/goblin-slayer.jpg');
 const gutsImage = require('../images/guts.jpg');
 const gonImage = require('../images/gon.jpg');
 const killuaImage = require('../images/killua.jpg');
+const esqueletoGif = require('../images/esqueleto.gif');
+const soldadoEsqueletoImage = require('../images/soldado-esqueleto.webp');
+const mewtwoImage = require('../images/mewtwo.jpg');
+const fantasmaticoImage = require('../images/fantasmatico.jpg');
 
 const muitoRaro = 'muito raro';
 
@@ -179,6 +183,51 @@ const cards = [
     atributo2: 90,
     atributo3: 90,
     imagemDaCarta: killuaImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Esqueleto Capoeirista',
+    descricaoDaCarta: 'Um capoeirista excelente.',
+    atributo1: 70,
+    atributo2: 90,
+    atributo3: 50,
+    imagemDaCarta: esqueletoGif,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Soldado Esqueleto',
+    descricaoDaCarta: 'Um guerreiro capaz de absorver poder dos mortos.',
+    atributo1: 70,
+    atributo2: 70,
+    atributo3: 70,
+    imagemDaCarta: soldadoEsqueletoImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Mewtwo',
+    // eslint-disable-next-line max-len
+    descricaoDaCarta: 'Geralmente permanece imóvel para economizar energia, para que possa liberar todo o seu poder em batalha.',
+    atributo1: 50,
+    atributo2: 70,
+    atributo3: 90,
+    imagemDaCarta: mewtwoImage,
+    raridade: muitoRaro,
+    superTrunfo: false,
+    indeletavel: true,
+  },
+  {
+    nomeDaCarta: 'Fantasmatico',
+    descricaoDaCarta: 'Um alienígena sombrio como um fantasma.',
+    atributo1: 60,
+    atributo2: 90,
+    atributo3: 60,
+    imagemDaCarta: fantasmaticoImage,
     raridade: muitoRaro,
     superTrunfo: false,
     indeletavel: true,

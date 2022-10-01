@@ -4,17 +4,18 @@ import context from '../context/myContext';
 import Card from './Card';
 
 export default function Deck({ showRemove }) {
-  const { deck, removeFromDeck, changeCompare, savePlayerCard } = useContext(context);
+  const { deck, removeFromDeck, setCompare, savePlayerCard } = useContext(context);
   return (
     <div className="playerDeck">
       { deck.length !== 0
     && deck.map((card, index) => (
-      <div key={ `${card.imagemDaCarta} ${index}` }>
+      <div className="deckCard" key={ `${card.imagemDaCarta} ${index}` }>
         <Card cardInfo={ card } />
         {
           showRemove === true ? (
             <button
               type="button"
+              className="removeDeckBtn"
               onClick={ () => removeFromDeck(card) }
             >
               Remover
@@ -22,9 +23,10 @@ export default function Deck({ showRemove }) {
             : (
               <button
                 type="button"
+                className="chooseBtn"
                 onClick={ () => {
                   savePlayerCard(card);
-                  changeCompare();
+                  setCompare((prevState) => !prevState);
                 } }
               >
                 Escolher

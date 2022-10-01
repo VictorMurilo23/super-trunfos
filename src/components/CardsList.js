@@ -29,6 +29,7 @@ export default function CardsList() {
             }
             <button
               type="button"
+              className="addDeckBtn"
               onClick={ () => addCardToDeck(card) }
               disabled={ deck.length === five }
             >

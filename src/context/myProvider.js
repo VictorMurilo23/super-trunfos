@@ -34,38 +34,32 @@ export default function Provider({ children }) {
   const [compare, setCompare] = useState(false);
   const [attribute, setAttribute] = useState('');
   const [score, setScore] = useState(0);
-  // const [gaming, setGaming] = useState(false);
   const [startGame, setStartGame] = useState(false);
   const [finishGame, setFinishGame] = useState(false);
+  const [opponentTurn, setOpponentTurn] = useState(false);
   const deckMaxLength = 5;
 
-  const endGame = () => {
-    setFinishGame(true);
-  };
-
-  const updateScore = () => {
-    setScore((prevState) => prevState + 1);
-  };
-
-  const changeCompare = () => {
-    setCompare((prevState) => !prevState);
+  const resetGame = () => {
+    setScore(0);
+    setStartGame(false);
+    setFinishGame(false);
+    setOpponentTurn(false);
   };
 
   const playAgain = (player, opponent) => {
     const filterPlayer = deck
-      .filter((element) => element.nomeDaCarta !== player.nomeDaCarta);
+      .filter((element) => element.id !== player.id);
     setDeck(filterPlayer);
     const filterOpponent = opponentDeck
       .filter((element) => element.nomeDaCarta !== opponent.nomeDaCarta);
     setOpponentDeck(filterOpponent);
     if (deck.length === 1) {
-      endGame();
+      setFinishGame(true);
     }
-
     setPlayerCard({});
     setOpponentCard({});
     setAttribute('');
-    changeCompare();
+    setCompare((prevState) => !prevState);
   };
 
   const saveAttribute = (string) => {
@@ -118,15 +112,27 @@ export default function Provider({ children }) {
     }
   };
 
+  const guidGenerator = () => {
+    const sixteen = 16;
+    const magicNumber = 0x10000;
+    const S4 = () => (((1 + Math.random()) * magicNumber) || 0)
+      .toString(sixteen)
+      .substring(1);
+    return (`${S4() + S4()}-${S4()}-${S4()}-${S4()}-${S4()}${S4()}${S4()}`);
+  };
+
+  const giveIdToDeckCards = () => {
+    const cardsIfId = deck.reduce((acc, cur) => {
+      cur.id = guidGenerator();
+      acc.push(cur);
+      return acc;
+    }, []);
+    setDeck(cardsIfId);
+  };
+
   const removeFromDeck = (card) => {
     const fi = deck.filter((element) => element.nomeDaCarta !== card.nomeDaCarta);
     setDeck(fi);
-  };
-
-  const resetarInfoCarta = () => {
-    setCardCustom({
-      ...cardInitialState,
-    });
   };
 
   const verificaSeTemTrunfo = () => {
@@ -151,7 +157,9 @@ export default function Provider({ children }) {
     };
 
     setSavedCards((prevState) => [...prevState, infoCartaSalva]);
-    resetarInfoCarta();
+    setCardCustom({
+      ...cardInitialState,
+    });
   };
 
   const handleChangeFilters = ({ target }) => {
@@ -211,6 +219,17 @@ export default function Provider({ children }) {
     setSavedCards(removeCard);
   };
 
+  const convertAttr = (attr) => {
+    switch (attr) {
+    case 'atributo1':
+      return 'Força';
+    case 'atributo2':
+      return 'Agilidade';
+    default:
+      return 'Inteligência';
+    }
+  };
+
   const { procurandoPorTrunfo, buscarPorNome, buscarPorRaridade } = filters;
   const filteredResults = procurandoPorTrunfo === false ? savedCards
     .filter((carta) => {
@@ -228,7 +247,7 @@ export default function Provider({ children }) {
 
   useEffect(() => {
     verificaTotalAtributos();
-  }, [cardCustom]);
+  }, [cardCustom]); // eslint-disable-next-line max-lines
 
   useEffect(() => {
     verificaSeTemTrunfo();
@@ -245,22 +264,26 @@ export default function Provider({ children }) {
     filteredResults,
     attribute,
     score,
-    finishGame,
-    salvarCarta,
-    handleChange, // eslint-disable-next-line max-lines
-    savePlayerCard,
     startGame,
+    finishGame,
+    opponentTurn,
+    salvarCarta,
+    handleChange,
+    setOpponentTurn,
+    savePlayerCard,
+    giveIdToDeckCards,
     setStartGame,
+    resetGame,
     deleteCard,
     handleChangeFilters,
     addCardToDeck,
     removeFromDeck,
     createOpponentDeck,
-    changeCompare,
+    setCompare,
+    convertAttr,
     saveAttribute,
-    updateScore,
+    setScore,
     playAgain,
-    endGame,
   };
 
   return (

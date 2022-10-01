@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CardsList from './components/CardsList';
 import CreateCard from './components/CreateCard';
 import FiltrosDeBusca from './components/FiltrosDeBusca';
 import Game from './components/Game';
-import Provider from './context/myProvider';
+import context from './context/myContext';
 
 function App() {
+  const { startGame } = useContext(context);
   return (
-    <Provider>
-      <>
-        <CreateCard />
-        <FiltrosDeBusca />
-        <CardsList />
-        <Game />
-      </>
-    </Provider>
+    <>
+      {
+        !startGame && (
+          <>
+            <CreateCard />
+            <FiltrosDeBusca />
+            <CardsList />
+          </>
+        )
+      }
+      <Game />
+    </>
   );
 }
 
